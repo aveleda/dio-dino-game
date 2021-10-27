@@ -4,6 +4,7 @@ const background = document.querySelector('.background');
 let isJumping = false;
 let isGameOver = false;
 let position = 0;
+let placar = 0;
 
 function handleKeyUp(event) {
   if (event.keyCode === 32) {
@@ -58,10 +59,15 @@ function createCactus() {
       // Game over
       clearInterval(leftTimer);
       isGameOver = true;
-      document.body.innerHTML = '<h1 class="game-over">Fim de jogo</h1>';
+      document.body.innerHTML = '<h1 class="game-over">Fim de jogo </h1>';  
+      var x = document.createElement("H2");
+      var t = document.createTextNode("Placar: " + placar.toString());
+      x.appendChild(t);
+      document.body.appendChild(x);
     } else {
       cactusPosition -= 10;
       cactus.style.left = cactusPosition + 'px';
+      placar += 1
     }
   }, 20);
 
